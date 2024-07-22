@@ -22,7 +22,6 @@ content
 12. Loader
 13. Clearfix
 
-
 [Color codes]
 Green #1abc9c
 Dark Blue #16a085
@@ -154,7 +153,7 @@ Grey #ECF0F1
 }
 
 .customColor {
-  background: #2C2D31;
+  background: #B2B2B2;
 }
 
 .wrap {
@@ -301,12 +300,12 @@ blockquote p {
   -webkit-border-radius: 30px;
      -moz-border-radius: 30px;
           border-radius: 30px;
-  background:#1abc9c;
+  background:#B2B2B2;
 }
 
 .btn:hover, .btn:focus, .btn-current {
   color: #fff;
-  background: #16a085;
+  background: #2C2D31;
 }
 
 .btn:hover, .social-set a:hover, .team-social a i:hover, .header-carousel .owl-buttons .owl-prev:hover, .header-carousel .owl-buttons .owl-next:hover {
@@ -1362,7 +1361,7 @@ address i {
 
 .box-icon i {
   line-height: 45px;
-  color: #16a085;
+  color: #B2B2B2;
 }
 
 /* Form, Comments and Contact */
@@ -1441,7 +1440,8 @@ input:not([type=submit]):not([type=file]), textarea {
 }
 
 input:not([type=submit]):not([type=file]):focus, textarea:focus {
-  border-color:#1abc9c;
+  /*border-color:#1abc9c;*/
+  border-color: #B2B2B2;
   outline: none;
 }
 
@@ -1484,7 +1484,7 @@ input:not([type=submit]):not([type=file]):focus, textarea:focus {
 ********************************************************* */
 
 footer {
-  background:#2C2D31;
+  background:#B2B2B2;
 }
 footer .grid {
   /*padding-top: 6em;*/
