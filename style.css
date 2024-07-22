@@ -119,13 +119,14 @@ Grey #ECF0F1
     width: 80%;
   }
 }
+
 @media (min-width: 300px) {
   .card {
     width: 60%;
   }
 }
 
-@media (max-device-height: 300px) {
+@media (max-device-height: 600px) {
   .card {
     width: 48%;
   }
@@ -134,6 +135,17 @@ Grey #ECF0F1
 @media (min-width: 1024px) {
   .card {
     width: 23%;
+  }
+}
+
+@media (min-width: 1660px) {
+  .card {
+    width: 20%;
+  }
+
+}@media (min-width: 2048px) {
+  .card {
+    width: 20%;
   }
 }
 
