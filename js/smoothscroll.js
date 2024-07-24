@@ -4,23 +4,35 @@
 // People involved
 // - Balazs Galambosi: maintainer (CHANGELOG.txt)
 // - Patrick Brunner (patrickb1991@gmail.com)
+let ssc_keyboardsupport = true;
+
+let ssc_frame;
+
+let ssc_initdone;
+
+let ssc_root;
+
+let ssc_fixedback = true;
+
+let ssc_activeElement;
+
 // - Michael Herf: ssc_pulse Algorithm
 
 function ssc_init() {
     if (!document.body) return;
-    var e = document.body;
-    var t = document.documentElement;
-    var n = window.innerHeight;
-    var r = e.scrollHeight;
+    let e = document.body;
+    let t = document.documentElement;
+    let n = window.innerHeight;
+    let r = e.scrollHeight;
     ssc_root = document.compatMode.indexOf("CSS") >= 0 ? t : e;
     ssc_activeElement = e;
     ssc_initdone = true;
-    if (top != self) {
+    if (top !== self) {
         ssc_frame = true
     } else if (r > n && (e.offsetHeight <= n || t.offsetHeight <= n)) {
         ssc_root.style.height = "auto";
         if (ssc_root.offsetHeight <= n) {
-            var i = document.createElement("div");
+            let i = document.createElement("div");
             i.style.clear = "both";
             e.appendChild(i)
         }
@@ -33,6 +45,16 @@ function ssc_init() {
         ssc_addEvent("keydown", ssc_keydown)
     }
 }
+
+const ssc_animtime = 500;
+
+let ssc_pulseAlgorithm = true;
+
+let ssc_framerate = 150;
+
+let ssc_que;
+
+let ssc_pending;
 
 function ssc_scrollArray(e, t, n, r) {
     r || (r = 1e3);
@@ -47,20 +69,20 @@ function ssc_scrollArray(e, t, n, r) {
     if (ssc_pending) {
         return
     }
-    var i = function () {
-        var s = +(new Date);
-        var o = 0;
-        var u = 0;
-        for (var a = 0; a < ssc_que.length; a++) {
-            var f = ssc_que[a];
-            var l = s - f.start;
-            var c = l >= ssc_animtime;
-            var h = c ? 1 : l / ssc_animtime;
+    const i = function () {
+        const s = +(new Date);
+        let o = 0;
+        let u = 0;
+        for (let a = 0; a < ssc_que.length; a++) {
+            const f = ssc_que[a];
+            const l = s - f.start;
+            const c = l >= ssc_animtime;
+            let h = c ? 1 : l / ssc_animtime;
             if (ssc_pulseAlgorithm) {
                 h = ssc_pulse(h)
             }
-            var p = f.x * h - f.lastX >> 0;
-            var d = f.y * h - f.lastY >> 0;
+            const p = f.x * h - f.lastX >> 0;
+            const d = f.y * h - f.lastY >> 0;
             o += p;
             u += d;
             f.lastX += p;
@@ -71,14 +93,14 @@ function ssc_scrollArray(e, t, n, r) {
             }
         }
         if (t) {
-            var v = e.scrollLeft;
+            const v = e.scrollLeft;
             e.scrollLeft += o;
             if (o && e.scrollLeft === v) {
                 t = 0
             }
         }
         if (n) {
-            var m = e.scrollTop;
+            const m = e.scrollTop;
             e.scrollTop += u;
             if (u && e.scrollTop === m) {
                 n = 0
@@ -97,17 +119,19 @@ function ssc_scrollArray(e, t, n, r) {
     ssc_pending = true
 }
 
+let ssc_stepsize = 150;
+
 function ssc_wheel(e) {
     if (!ssc_initdone) {
         ssc_init()
     }
-    var t = e.target;
-    var n = ssc_overflowingAncestor(t);
+    const t = e.target;
+    const n = ssc_overflowingAncestor(t);
     if (!n || e.defaultPrevented || ssc_isNodeName(ssc_activeElement, "embed") || ssc_isNodeName(t, "embed") && /\.pdf/i.test(t.src)) {
         return true
     }
-    var r = e.wheelDeltaX || 0;
-    var i = e.wheelDeltaY || 0;
+    let r = e.wheelDeltaX || 0;
+    let i = e.wheelDeltaY || 0;
     if (!r && !i) {
         i = e.wheelDelta || 0
     }
@@ -121,20 +145,34 @@ function ssc_wheel(e) {
     e.preventDefault()
 }
 
+let ssc_arrowscroll = 50;
+
+let ssc_key = {
+    left: 37,
+    up: 38,
+    right: 39,
+    down: 40,
+    spacebar: 32,
+    pageup: 33,
+    pagedown: 34,
+    end: 35,
+    home: 36
+};
+
 function ssc_keydown(e) {
-    var t = e.target;
-    var n = e.ctrlKey || e.altKey || e.metaKey;
+    let t = e.target;
+    let n = e.ctrlKey || e.altKey || e.metaKey;
     if (/input|textarea|embed/i.test(t.nodeName) || t.isContentEditable || e.defaultPrevented || n) {
         return true
     }
     if (ssc_isNodeName(t, "button") && e.keyCode === ssc_key.spacebar) {
         return true
     }
-    var r, i = 0,
+    let r, i = 0,
         s = 0;
-    var o = ssc_overflowingAncestor(ssc_activeElement);
-    var u = o.clientHeight;
-    if (o == document.body) {
+    let o = ssc_overflowingAncestor(ssc_activeElement);
+    let u = o.clientHeight;
+    if (o === document.body) {
         u = window.innerHeight
     }
     switch (e.keyCode) {
@@ -158,7 +196,7 @@ function ssc_keydown(e) {
         s = -o.scrollTop;
         break;
     case ssc_key.end:
-        var a = o.scrollHeight - o.scrollTop - u;
+        let a = o.scrollHeight - o.scrollTop - u;
         s = a > 0 ? a + 10 : 0;
         break;
     case ssc_key.left:
@@ -178,16 +216,26 @@ function ssc_mousedown(e) {
     ssc_activeElement = e.target
 }
 
+let ssc_cache;
+
+let ssc_uniqueID = function () {
+    let e = 0;
+    return function (t) {
+        return t.ssc_uniqueID || (t.ssc_uniqueID = e++)
+    }
+}();
+
 function ssc_setCache(e, t) {
-    for (var n = e.length; n--;) ssc_cache[ssc_uniqueID(e[n])] = t;
+    for (let n = e.length; n--;) ssc_cache[ssc_uniqueID(e[n])] = t;
     return t
 }
 
 function ssc_overflowingAncestor(e) {
-    var t = [];
-    var n = ssc_root.scrollHeight;
+    let t = [];
+    let n = ssc_root.scrollHeight;
+    let overflow;
     do {
-        var r = ssc_cache[ssc_uniqueID(e)];
+        let r = ssc_cache[ssc_uniqueID(e)];
         if (r) {
             return ssc_setCache(t, r)
         }
@@ -196,26 +244,27 @@ function ssc_overflowingAncestor(e) {
             if (!ssc_frame || ssc_root.clientHeight + 10 < n) {
                 return ssc_setCache(t, document.body)
             }
-        } else if (e.clientHeight + 10 < e.scrollHeight) {
+        } else let overflow;
+        if (e.clientHeight + 10 < e.scrollHeight) {
             overflow = getComputedStyle(e, "").getPropertyValue("overflow");
             if (overflow === "scroll" || overflow === "auto") {
                 return ssc_setCache(t, e)
             }
         }
-    } while (e = e.parentNode)
+    } while (e === e.parentNode)
 }
 
 function ssc_addEvent(e, t, n) {
     window.addEventListener(e, t, n || false)
 }
-
-function ssc_removeEvent(e, t, n) {
-    window.removeEventListener(e, t, n || false)
-}
-
 function ssc_isNodeName(e, t) {
     return e.nodeName.toLowerCase() === t.toLowerCase()
 }
+
+let ssc_direction = {
+    x: 0,
+    y: 0
+};
 
 function ssc_directionCheck(e, t) {
     e = e > 0 ? 1 : -1;
@@ -227,8 +276,12 @@ function ssc_directionCheck(e, t) {
     }
 }
 
+let ssc_pulseScale = 6;
+
+let ssc_pulseNormalize;
+
 function ssc_pulse_(e) {
-    var t, n, r;
+    let t, n, r;
     e = e * ssc_pulseScale;
     if (e < 1) {
         t = e - (1 - Math.exp(-e))
@@ -244,58 +297,28 @@ function ssc_pulse_(e) {
 function ssc_pulse(e) {
     if (e >= 1) return 1;
     if (e <= 0) return 0;
-    if (ssc_pulseNormalize == 1) {
+    if (ssc_pulseNormalize === 1) {
         ssc_pulseNormalize /= ssc_pulse_(1)
     }
     return ssc_pulse_(e)
 }
 
-var ssc_framerate = 150;
-var ssc_animtime = 500;
-var ssc_stepsize = 150;
-var ssc_pulseAlgorithm = true;
-var ssc_pulseScale = 6;
-var ssc_pulseNormalize = 1;
-var ssc_keyboardsupport = true;
-var ssc_arrowscroll = 50;
-var ssc_frame = false;
-var ssc_direction = {
-    x: 0,
-    y: 0
-};
+ssc_pulseNormalize = 1;
+ssc_frame = false;
 
-var ssc_initdone = false;
-var ssc_fixedback = true;
-var ssc_root = document.documentElement;
-var ssc_activeElement;
-var ssc_key = {
-    left: 37,
-    up: 38,
-    right: 39,
-    down: 40,
-    spacebar: 32,
-    pageup: 33,
-    pagedown: 34,
-    end: 35,
-    home: 36
-};
+ssc_initdone = false;
+ssc_root = document.documentElement;
 
-var ssc_que = [];
-var ssc_pending = false;
-var ssc_cache = {};
+ssc_que = [];
+ssc_pending = false;
+ssc_cache = {};
 
 setInterval(function () {
     ssc_cache = {}
 }, 10 * 1e3);
 
-var ssc_uniqueID = function () {
-    var e = 0;
-    return function (t) {
-        return t.ssc_uniqueID || (t.ssc_uniqueID = e++)
-    }
-}();
 
-var ischrome = /chrome/.test(navigator.userAgent.toLowerCase());
+let ischrome = /chrome/.test(navigator.userAgent.toLowerCase());
 
 if (ischrome) {
     ssc_addEvent("mousedown", ssc_mousedown);
