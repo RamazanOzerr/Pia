@@ -6,6 +6,7 @@
 
 /*
 logo
+services
 [Table of content]
 content
 1. General Styling
@@ -452,12 +453,10 @@ blockquote p {
 }
 
 .logo {
-  /*display: ;*/
   float: left;
-  /*text-indent: -9999px;*/
-
+  text-indent: -9999px;
+  /*padding: 20px;*/
   background: url(images/logo_transparent.svg) no-repeat;
-  /*background-size: 144px 76px;*/
 }
 
 .logo:hover, .logo:focus {
