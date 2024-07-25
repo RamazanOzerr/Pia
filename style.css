@@ -6,6 +6,10 @@
 
 /*
 wrap
+h2
+content address
+content
+background
 [Table of content]
 content
 1. General Styling
@@ -633,7 +637,7 @@ blockquote p {
 .parallax-section {
   z-index: -1;
   clear: both;
-  background-image: url('images/site_son.png');
+  background-image: url('images/1920X1080.png');
   background-repeat: repeat;
   background-attachment: fixed;
   background-position: center center;
@@ -682,7 +686,14 @@ blockquote p {
   font-size: 2.5em;
 }
 
-.parallax-section .content p, .top-slider .content-header p, .home-slider .content p {
+.parallax-section .content p, .top-slider .content-header p, .home-slider {
+  width: 70%;
+  margin: 0 auto 30px auto;
+  color: #000000;
+}
+.content p {
+  font-size: 1.7em;
+  line-height: 1.0em;
   width: 70%;
   margin: 0 auto 30px auto;
   color: #000000;
@@ -760,7 +771,8 @@ blockquote p {
 
 /*  position: relative;*/
 /*  margin-bottom: 1em;*/
-/*/*border-radius*/*/
+/*/*border-radius*/
+
 /*  -webkit-border-radius: 5px;*/
 /*     -moz-border-radius: 5px;*/
 /*          border-radius: 5px;*/
@@ -1564,6 +1576,16 @@ footer p, footer a {
   #top-header {
     padding: 15px 20px;
   }
+  .parallax-section {
+    z-index: -1;
+    clear: both;
+    background-image: url('images/1920X1080.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    /*height: 100vh; !* Full screen height *!*/
+  }
 
 }
 
@@ -1571,6 +1593,16 @@ footer p, footer a {
   #top-header {
     position: absolute;
     padding: 8px 0;
+  }
+  .parallax-section {
+    z-index: -1;
+    clear: both;
+    background-image: url('images/1280X720.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    /*height: 100vh; !* Full screen height *!*/
   }
 
   .logo-wrap {
@@ -1684,6 +1716,31 @@ footer p, footer a {
 }
 
 @media handheld, only screen and (max-width: 480px) {
+
+  .content p {
+    font-size: 1.0em;
+    line-height: 1.0em;
+    width: 100%;
+    margin: 0 auto 30px auto;
+    color: #000000;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 2.0em;
+    line-height: 1.2em;
+  }
+
+  .parallax-section {
+    z-index: -1;
+    clear: both;
+    background-image: url('images/720X1280.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-size: cover;
+    height: 100vh; /* Full screen height */
+  }
 
   .header-carousel {
     height: 620px;
