@@ -450,6 +450,7 @@ blockquote p {
   z-index: 1000;
   width: 100%;
   padding: 23px 0;
+  overflow: hidden;
 /*transition*/
   -webkit-transition: all .15s linear;
      -moz-transition: all .15s linear;
@@ -642,7 +643,6 @@ blockquote p {
   background-attachment: fixed;
   background-position: center center;
   background-size: cover;
-  /*height: 100vh; !* Full screen height *!*/
 }
 
 .parallax2 {
@@ -1057,7 +1057,7 @@ input:not([type=submit]):not([type=file]):focus, textarea:focus {
   .parallax-section {
     z-index: -1;
     clear: both;
-    background-image: url('images/1280X720.png');
+    background-image: url('images/720X1280.png');
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center center;
@@ -1177,6 +1177,11 @@ input:not([type=submit]):not([type=file]):focus, textarea:focus {
 
 @media handheld, only screen and (max-width: 480px) {
 
+  .header-default {
+    /*background: #2C2D31;*/
+    background: transparent ;
+  }
+
   .content p {
     font-size: 1.0em;
     line-height: 1.0em;
@@ -1198,8 +1203,8 @@ input:not([type=submit]):not([type=file]):focus, textarea:focus {
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center center;
-    background-size: cover;
-    height: 100vh; /* Full screen height */
+    /*background-size: cover;*/
+    /*height: 100vh; !* Full screen height *!*/
   }
 
   .header-carousel {
