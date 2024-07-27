@@ -6,6 +6,8 @@
 
 /*
 wrap
+col-1-2
+address
 h2
 content address
 content
@@ -156,6 +158,12 @@ services
 *, *:before, *:after {
   box-sizing: border-box;
 }
+
+/*.center-container {*/
+/*  display: flex;*/
+/*  justify-content: center;*/
+/*  width: 100%; !* or any specific width *!*/
+/*}*/
 
 .customColor {
   background: #660099;
@@ -782,6 +790,7 @@ blockquote p {
 
 .contact .address h3 {
   margin-top: 0;
+  /*text-align: center;*/
 }
 
 address {
@@ -797,6 +806,10 @@ address i {
   position: absolute;
   top: 2px;
   left: 0;
+}
+
+address p {
+  color: #484f58;
 }
 
 .address span {
@@ -818,12 +831,19 @@ address i {
   height: 45px;
   line-height: 40px;
   margin: 0 20px 0 0;
-  width: 40px;
+  width: 45px;
 }
 
 .box-icon i {
-  line-height: 45px;
+  /*line-height: 45px;*/
   color: #1893F8;
+}
+
+.icon-email::before {
+  color: #1893F8;
+  content: "\f0e0"; /* Font Awesome email icon code */
+  font-family: "Font Awesome 5 Free", serif;
+  font-weight: 900; /* Necessary to use the solid style */
 }
 
 /* Form, Comments and Contact */
