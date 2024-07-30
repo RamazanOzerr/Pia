@@ -1111,7 +1111,7 @@ input:not([type=submit]):not([type=file]):focus, textarea:focus {
   .parallax-section {
     z-index: -1;
     clear: both;
-    background-image: url('images/390x844.PNG');
+    background-image: url('images/mobil.PNG');
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center center;
