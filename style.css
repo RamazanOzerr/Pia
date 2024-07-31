@@ -9,6 +9,7 @@ wrap
 col-1-2
 address
 h2
+center-container
 content address
 content
 background
@@ -234,11 +235,11 @@ services
   box-sizing: border-box;
 }
 
-/*.center-container {*/
-/*  display: flex;*/
-/*  justify-content: center;*/
-/*  width: 100%; !* or any specific width *!*/
-/*}*/
+.center-container {
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+}
 
 .customColor {
   background: #660099;
@@ -780,6 +781,7 @@ blockquote p {
   width: 70%;
   margin: 0 auto 30px auto;
   color: #000000;
+  font-weight: revert;
 }
 
 /* *********************************************************
@@ -1328,7 +1330,7 @@ input:not([type=submit]):not([type=file]):focus, textarea:focus {
   .parallax-section {
     z-index: -1;
     clear: both;
-    background-image: url('images/390x844.PNG');
+    background-image: url('images/mobil.PNG');
     background-repeat: repeat;
     background-attachment: fixed;
     background-position: center center;
